@@ -1,14 +1,20 @@
+
+import useNowPlayingMovies from "../Hooks/useNowPlayingmovies";
 import Header from "./Header";
-import {  signOut } from "firebase/auth";
-import { auth } from "../Utils/firebase";
-import { useNavigate } from "react-router-dom";
+import PrimaryContainer from "./PrimaryContainer";
+import SecondaryConatiner from "./SecondaryConatiner";
+
 
 const Browse=()=>
 {
+  useNowPlayingMovies();
     return(
         <div className="flex justify-between">
             <div>
             <Header/>
+            <PrimaryContainer/>
+            <SecondaryConatiner/>
+
            </div>
 
           

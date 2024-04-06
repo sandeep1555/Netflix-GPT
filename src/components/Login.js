@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { adduser } from "../Utils/userSlice";
 import { useDispatch } from "react-redux";
+import { AVATAR_URL } from "../Utils/useConstant";
 const Login=()=>
 {
   const dispatch=useDispatch();
@@ -40,14 +41,13 @@ if(!IsSignInForm)
 
 
 updateProfile(user, {
-  displayName: name.current.value, photoURL: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdRUXsDKxLIe5bne0KXYY3zWjquntg26jfvZ03sYKuaHv_xf0e_r6y6olhLLWdQdSzc9K4CWfUrs6mLk9mXhbT2B-Nc4NiZp15EBlPJ8wbp4ZB6Gp0jwiB5iT_3ilxYZFOKTa2yUvYEsKOvP7Q0r2msSIBO-WaYqfokNc_9A7ycUWR5ryQ7bFTRKBWpLol/s0/IMG_20231221_173204-01.jpeg"
+  displayName: name.current.value, photoURL: AVATAR_URL
 }).then(() => {
 
   
   const {uid,email,displayName,photoURL}  = auth.currentUser;
   dispatch(adduser({uid:uid,email: email,displayName:displayName,photoURL: photoURL}));
 
-  navigate("/browse");
 
 }).catch((error) => {
   setErrormessage(error.message)
@@ -73,8 +73,6 @@ else{
     .then((userCredential) => {
       
       const user = userCredential.user;
-      
-      navigate("/browse");
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -95,14 +93,14 @@ else{
         <div>
 
      
-<div className="absolute">
-<img  className="bg-opacity-25 bg-black" src="https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/fb548c0a-8582-43c5-9fba-cd98bf27452f/IN-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="netflix-bg" />
+<div className="absolute ">
+<img  className="bg-opacity-25 bg-black " src="https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/fb548c0a-8582-43c5-9fba-cd98bf27452f/IN-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg" alt="netflix-bg" />
 </div>
 
 <form onSubmit={(e)=>{e.preventDefault()}} className="absolute bg-black px-10 py-10 w-3/12 text-white my-32 mx-auto left-0 right-0 opacity-85 ">
     
         <h1 className="text-2xl my-5 mx-2">{IsSignInForm ? "Sign In": "Sign Up"}</h1>
-    <input  className="m-2 w-full p-4 rounded-lg border-white border bg-black" ref={email}  type="text" placeholder={IsSignInForm?"Email or Phone Number ":"Email"}/>
+    <input  className="m-2 w-full p-4 rounded-lg border-white border bg-black " ref={email}  type="text" placeholder={IsSignInForm?"Email or Phone Number ":"Email"}/>
     {!IsSignInForm &&  <input  className="m-2 w-full p-4 rounded-lg border-white border bg-black  " ref={name} type="text" placeholder="User Name"/>}
     {!IsSignInForm &&  <input  className="m-2 w-full p-4 rounded-lg border-white border bg-black  "  type="number" placeholder="Phone Number "/>}
     <input className="m-2 w-full p-4 rounded-lg border-white border bg-black" type="password"  ref={password} placeholder={IsSignInForm?"Password ":"Create New Password"}/>
