@@ -25,3 +25,8 @@ export const  options = {
   identifer:"spanish",
   name:"spanish",
 }]
+
+
+
+
+export const OPENAI_KEY="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"

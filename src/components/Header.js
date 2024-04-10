@@ -14,6 +14,7 @@ const Header=()=>
 {
   const dispatch=useDispatch();
   const user=useSelector(store => store.user);
+  const gptSearch=useSelector(store=>store.gpt.gptSearch);
     const navigate=useNavigate();
     const handleSignout=()=>
     {
@@ -64,10 +65,10 @@ signOut(auth).then(() => {
 
 
            { user && <div className="flex p-2">
-            <select className="m-4 my-6 px-2 bg-red rounded-lg" onChange={handleLanguageChange}>
-              {SUPPORTED_LANG.map((lang)=> <option value={lang.identifer}>{lang.name}</option>)}
-            </select>
-            <button className="px-4 py-2 m-6  bg-red-600 text-white rounded-lg " onClick={handleGptSearch}>GPT Search</button>
+            { gptSearch && <select className="m-4 my-6 px-2 bg-red rounded-lg" onChange={handleLanguageChange}>
+              {SUPPORTED_LANG.map((lang)=> <option  key={lang.name} value={lang.identifer}>{lang.name}</option>)}
+            </select>}
+           <button className="px-4 py-2 m-6  bg-red-600 text-white rounded-lg " onClick={handleGptSearch}>{gptSearch ? "Home" : "GPT Seacrh"}</button>
            <p className="text-white mx-4 my-8">Welcome,{user.displayName}</p>
 
            <img  className="w-14 h-14  my-4 rounded-lg" src={user.photoURL}/>

@@ -9,7 +9,7 @@ const PrimaryContainer=()=>
 
        if(!Allmovies) return;
     const mainMovie=Allmovies[0];
-    console.log(mainMovie);
+
     const {title,overview,id}=mainMovie;
    
     return(<div>

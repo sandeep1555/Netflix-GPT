@@ -1,4 +1,5 @@
 import { BG_URL } from "../Utils/useConstant"
+import GptMovieSuggestion from "./GptMovieSuggestion"
 import GptSearchBar from "./GptSearchBar"
 
 const GptSearchPage=()=>
@@ -10,6 +11,7 @@ const GptSearchPage=()=>
               <img  className="bg-opacity-25 bg-black" src={BG_URL} alt="netflix-bg" />
               </div>
             <GptSearchBar/>
+            <GptMovieSuggestion/>
     </div>)
 }
 
