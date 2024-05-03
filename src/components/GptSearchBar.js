@@ -15,12 +15,12 @@ const navigate=useNavigate();
   const handleGptSearch=async()=>
   {
     const searchTextValue=searchText.current.value;
-    const query="Act as a movie recommendation system and suggest some movies for a query "+ searchTextValue+".Only give  names of 5 movies,comma seperated like the example result given ahead.Example Result:salaar,darling,bahubali,bahubali 2,saaho ";
+    // const query="Act as a movie recommendation system and suggest some movies for a query "+ searchTextValue+".Only give  names of 5 movies,comma seperated like the example result given ahead.Example Result:salaar,darling,bahubali,bahubali 2,saaho ";
 
-    const chatCompletion = await openai.chat.completions.create({
-      messages: [{ role: 'user', content: searchTextValue}],
-      model: 'gpt-3.5-turbo',
-    });
+    // const chatCompletion = await openai.chat.completions.create({
+    //   messages: [{ role: 'user', content: searchTextValue}],
+    //   model: 'gpt-3.5-turbo',
+    // });
     
 
   }
