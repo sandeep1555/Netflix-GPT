@@ -8,6 +8,7 @@ import Header from "./Header";
 import PrimaryContainer from "./PrimaryContainer";
 import SecondaryConatiner from "./SecondaryConatiner";
 import GptSearchPage from "./GptSearchPage"
+import { Outlet } from "react-router-dom";
 
 
 const Browse=()=>
@@ -20,12 +21,11 @@ const Browse=()=>
     return(
         <div className="flex justify-between overflow-hidden">
             <div>
-            <Header/>
-            {changegptPage ? <GptSearchPage/>:
-            <>
+  
+
             <PrimaryContainer/>
             <SecondaryConatiner/>
-            </>}
+
 
            </div>
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MovieCards from "./MovieCards";
 
 const MovieList=({title,movies})=>
@@ -12,7 +13,7 @@ const MovieList=({title,movies})=>
               <div className="flex">
                 {movies.map((movie)=>
                 (
-                   <MovieCards  key={movie.id}  moviePoster={movie.poster_path}/>
+                   <Link to={"/watch?v="+movie.id}><MovieCards  key={movie.id}  moviePoster={movie.poster_path}/></Link>
                 ))
             }
               </div>

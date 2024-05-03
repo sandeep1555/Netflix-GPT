@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import {  useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { adduser, removeuser } from "../Utils/userSlice";
 import { LOGO_URL, SUPPORTED_LANG } from "../Utils/useConstant";
 import { changeTopgptSearch } from "../Utils/gptSlice";
@@ -15,6 +15,7 @@ const Header=()=>
   const dispatch=useDispatch();
   const user=useSelector(store => store.user);
   const gptSearch=useSelector(store=>store.gpt.gptSearch);
+  const  changegptPage=useSelector(store=>store.gpt.gptSearch);
     const navigate=useNavigate();
     const handleSignout=()=>
     {
@@ -48,7 +49,17 @@ signOut(auth).then(() => {
 
     const handleGptSearch=()=>
     {
-      dispatch(changeTopgptSearch());
+
+    if( changegptPage)
+    {
+      navigate("/browse");
+      window.location.reload();
+    }  else
+   { 
+    dispatch(changeTopgptSearch())
+  } ;
+
+
     }
 
     const handleLanguageChange=(e)=>
@@ -56,10 +67,29 @@ signOut(auth).then(() => {
          dispatch(changelanguage(e.target.value))
     }
 
+    const [isScrolled, setIsScrolled] = useState(false);
 
-    return(<div className="absolute w-screen  px-8 py-2  bg-gradient-to-b from-black z-10 flex justify-between">
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
+    return(<div className={` w-screen  px-8 py-2 ${isScrolled ?   'bg-black':'bg-gradient-to-b from-black  to-transparent' }   flex justify-between items-center fixed z-50 h-[100px]`} >
         <div>
-<img  className="w-44" src={LOGO_URL} alt="logo"/>
+<Link to={"/"}><img  className="w-44 cursor-pointer" src={LOGO_URL} alt="logo"/></Link>
 </div>
 
 
@@ -74,7 +104,7 @@ signOut(auth).then(() => {
            <img  className="w-14 h-14  my-4 rounded-lg" src={user.photoURL}/>
 
 
-           <button onClick={handleSignout} className="bg-red-600 text-white px-4 py-2 m-6 ">Sign Out</button>
+           <button onClick={handleSignout} className="bg-red-600 text-white px-4 py-2 m-6 rounded-lg ">Sign Out</button>
            </div>}
 
 

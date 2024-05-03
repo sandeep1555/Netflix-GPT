@@ -4,16 +4,15 @@ import VedioBackground from "./VedioBackground";
 
 const PrimaryContainer=()=>
 {
-
     const Allmovies=useSelector(store=>store.movies?.nowPlayingMovies);
 
        if(!Allmovies) return;
     const mainMovie=Allmovies[0];
 
     const {title,overview,id}=mainMovie;
-   
+   console.log(mainMovie);
     return(<div>
-       <VedioTitle title={title} overview={overview}/>
+       <VedioTitle title={title} overview={overview} id={id}/>
        <VedioBackground id={id} />
     </div>)
 }
