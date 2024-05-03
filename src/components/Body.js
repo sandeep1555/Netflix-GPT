@@ -14,7 +14,6 @@ const Body=()=>
   
     return(
         <div>
-
    <Outlet/>
         </div>
     )

@@ -20,9 +20,12 @@ const Header=()=>
     const handleSignout=()=>
     {
 signOut(auth).then(() => {
+  removeuser(user);
+  navigate("/");
+  window.location.reload();
+
 
 }).catch((error) => {
-    navigate("/error");
   
 });
     }

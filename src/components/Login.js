@@ -12,7 +12,6 @@ import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 const Login=()=>
 {
   const dispatch=useDispatch();
-  const navigate=useNavigate();
   const [IsSignInForm,setIsSignInForm]=useState(true);
   const [SignInButton,setSignInButton]=useState("Sign In");
   const [SignUpButton,setSignUpButton]=useState("Sign Up");

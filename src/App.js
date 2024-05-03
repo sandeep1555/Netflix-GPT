@@ -8,6 +8,7 @@ import Browse from './components/Browse';
 import WatchPage from './components/WatchPage';
 import Header from './components/Header';
 import GptSearchPage from './components/GptSearchPage';
+import ComingSoon from './components/ComingSoon';
 
 
 function App() {
@@ -37,8 +38,13 @@ export const appRouter=createBrowserRouter([
       {
           path:"/watch",
           element:<WatchPage/>,
-      }
+      },
+      
       ]
+  },
+  {
+    path:"/coming",
+    element:<ComingSoon/>,
   },
   
 ])
