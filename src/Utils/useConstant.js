@@ -28,5 +28,3 @@ export const  options = {
 
 
 
-
-//export const OPENAI_KEY="sk-proj-gAP4ne8ntxFTFwjHr68kT3BlbkFJYngqixRFjCx6ebICFjzL"
