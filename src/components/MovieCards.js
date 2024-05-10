@@ -1,12 +1,11 @@
 import { useRef, useState } from "react";
 import { IMG_CDN_URL } from "../Utils/useConstant"
 
-const MovieCards=({movie,moviePoster})=>
+const MovieCards=({moviePoster})=>
 
 {
+    if(!moviePoster)  return null;
 
-
-  
     const scrollToTop = () => {
      // Scroll the video container to the top
      window.scrollTo({ top: 0, behavior: 'smooth' });

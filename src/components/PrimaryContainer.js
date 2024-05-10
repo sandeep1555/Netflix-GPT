@@ -10,7 +10,7 @@ const PrimaryContainer=()=>
     const mainMovie=Allmovies[0];
 
     const {title,overview,id}=mainMovie;
-   console.log(mainMovie);
+
     return(<div>
        <VedioTitle title={title} overview={overview} id={id}/>
        <VedioBackground id={id} />

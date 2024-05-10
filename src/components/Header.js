@@ -55,11 +55,11 @@ signOut(auth).then(() => {
 
     if( changegptPage)
     {
-      navigate("/browse");
+      navigate("/");
       window.location.reload();
     }  else
    { 
-    dispatch(changeTopgptSearch())
+    dispatch(changeTopgptSearch());
   } ;
 
 

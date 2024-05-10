@@ -14,7 +14,7 @@ const dispatch=useDispatch();
 const watchpagevedios=useSelector(store=>store.movies.watchpageTrailer);
     const [searchparams]=useSearchParams();
     const movieId=searchparams.get("v");
-    console.log(movieId);
+
     
 
 
@@ -23,7 +23,6 @@ const watchpagevedios=useSelector(store=>store.movies.watchpageTrailer);
 
         const data=await fetch('https://api.themoviedb.org/3/movie/'+movieId+'/videos?language=en-US', options);
         const json=await data.json();
-        console.log(json.results);
          dispatch(AddwatchpageTrailer(json.results));
     }
 

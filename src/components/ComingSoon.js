@@ -5,7 +5,7 @@ const ComingSoon = () => {
 
 
 
-    console.log("coming son")
+
   return (
     <div>
     <div className={`bg-skin w-full h-full absolute top-0 -z-0 bg-gradient-to-b from-indigo-800 to-[#141414] transition-colors`}></div>

@@ -1,7 +1,32 @@
+import { useDispatch, useSelector } from "react-redux"
+import MovieList from "./MovieList";
+import { BG_URL } from "../Utils/useConstant";
+
 const GptMovieSuggestion=()=>
 {
-    return (<div>
 
+
+   const movieName=useSelector(store=>store.gpt.movieName);
+   const movieInfo=useSelector(store=>store.gpt.movieInfo);
+
+
+
+
+
+    return (
+        <div>
+            
+    
+    <div className="bg-gray-900  mt-[100px] rounded-lg overflow-x-hidden">
+
+
+        { movieName && movieName.map((moviename,index)=>
+        (
+            <MovieList title={moviename}  movies={movieInfo[index]} />
+        ))}
+
+
+    </div>
     </div>)
 }
 

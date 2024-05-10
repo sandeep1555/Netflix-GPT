@@ -28,3 +28,8 @@ export const  options = {
 
 
 
+export const MY_API_KEY="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"
+
+export const MY_SECRET_KEY="netflix-gpt";
+
+export const OPEN_AI_KEY="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"

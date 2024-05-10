@@ -6,7 +6,7 @@ const VedioBackground=({id})=>
 {
 const mute=useSelector(store=>store.movies.muteTotrailer);
 const muteval=mute?"":"mute=1";
-console.log(muteval)
+
 const TrailerKey=useSelector(store=>store.movies?.VedioTrailer?.key);
 
    useMovietrailer(id);

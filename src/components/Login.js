@@ -20,7 +20,7 @@ const Login=()=>
   const password=useRef(null);
   const name=useRef(null);
   const newPassword=useRef(null);
-  console.log(password)
+
  const clickhandlebutton=()=>
     {
 

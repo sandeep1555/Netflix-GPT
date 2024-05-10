@@ -6,12 +6,18 @@ const GptSearchPage=()=>
 {
 
 
-    return(<div className="w-screen  h-full  ">
-        <div className="absolute -z-10  h-full">
-              <img  className="bg-opacity-25 bg-black h-full " src={BG_URL} alt="netflix-bg" />
+    return(<div >
+        <div className="absolute -z-10   ">
+              <img  className="bg-opacity-25 bg-black bg-repeat-y " src={BG_URL} alt="netflix-bg" />
               </div>
-            <GptSearchBar/>
-            <GptMovieSuggestion/>
+              <GptSearchBar/>
+              
+              <GptMovieSuggestion/>
+           
+           
+
+
+            
     </div>)
 }
 

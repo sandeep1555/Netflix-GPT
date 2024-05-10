@@ -9,7 +9,7 @@ const SecondaryConatiner=()=>
  
     return(
     movies && 
-    <div className="bg-stone-900">
+    <div className="bg-gray-900">
     
     <div className="-mt-52 z-20 relative">
         <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
