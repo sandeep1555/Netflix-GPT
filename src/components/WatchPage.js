@@ -34,14 +34,19 @@ useEffect(()=>
 
         
 
+
   return (
+    <>
+
     <div className='pt-[0px]'>
+
 {watchpagevedios && <WatchPageVedio />}
 
 
 <WatchpageList/>
 
     </div>
+    </>
   )
 }
 

@@ -11,7 +11,7 @@ const MovieCards=({moviePoster})=>
      window.scrollTo({ top: 0, behavior: 'smooth' });
    };
     return(
-        <div className="w-64 ml-5  rounded-lg" onClick={scrollToTop}  >
+        <div className="w-64 ml-5  rounded-lg hover:scale-110 p-2 " onClick={scrollToTop}  >
            <img  className="rounded-lg" src={IMG_CDN_URL+moviePoster}/>
 
            

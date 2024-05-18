@@ -10,19 +10,17 @@ const GptMovieSuggestion=()=>
    const movieInfo=useSelector(store=>store.gpt.movieInfo);
 
 
-
+console.log(movieName)
 
 
     return (
         <div>
-            
-    
     <div className="bg-gray-900  mt-[100px] rounded-lg overflow-x-hidden">
 
 
         { movieName && movieName.map((moviename,index)=>
         (
-            <MovieList title={moviename}  movies={movieInfo[index]} />
+            <MovieList  title={moviename}  key={moviename} movies={movieInfo[index]} />
         ))}
 
 

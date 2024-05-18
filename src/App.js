@@ -9,6 +9,7 @@ import WatchPage from './components/WatchPage';
 import Header from './components/Header';
 import GptSearchPage from './components/GptSearchPage';
 import ComingSoon from './components/ComingSoon';
+import SearchPage from './components/SearchPage';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
   const  changegptPage=useSelector(store=>store.gpt.gptSearch);
   return (
     <div className="">
-            <Header/>
+        <Header/>       
       {changegptPage ? <GptSearchPage/>: <Body/>}
     </div>
   );
@@ -36,16 +37,18 @@ export const appRouter=createBrowserRouter([
           element:<Browse/>,
       },
       {
-          path:"/watch",
-          element:<WatchPage/>,
-      },
+        path:"/watch",
+        element:<WatchPage/>,
+    },
+    {
+      path:"/search",
+      element:<SearchPage/>
+    }
       
       ]
-  },
-  {
-    path:"/coming",
-    element:<ComingSoon/>,
-  },
+    },
+    
+      
   
 ])
 export default App;

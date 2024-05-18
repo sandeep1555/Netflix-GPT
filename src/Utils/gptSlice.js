@@ -4,7 +4,7 @@ import { act } from "react";
 const gptSearch=createSlice({
     name:"gptsearch",
     initialState:{
-            gptSearch:false,
+            gptSearch:null,
             movieInfo:null,
             movieName:null,
     },
@@ -12,7 +12,7 @@ const gptSearch=createSlice({
     {
         changeTopgptSearch:(state,action)=>
         {
-            state.gptSearch= !state.gptSearch;
+            state.gptSearch= action.payload;
         },
         getMovieInfo:(state,action)=>
         {

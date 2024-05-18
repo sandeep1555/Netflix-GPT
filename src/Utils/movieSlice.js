@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react";
 
 
 const movieSlice=createSlice({
@@ -11,6 +12,7 @@ const movieSlice=createSlice({
         upComingMovies:null,
         muteTotrailer:false,
         watchpageTrailer:null,
+        searchResults:null,
     },
     reducers:
     {
@@ -41,8 +43,12 @@ const movieSlice=createSlice({
         AddMutetoTrailer:(state,action)=>
         {
             state.muteTotrailer= !state.muteTotrailer;
+        },
+        getSearchResult:(state,action)=>
+        {
+            state.searchResults=action.payload;
         }
     }
 })
-export const {AddnowPlayingMovies,AddVedioTrailer,AddPopularMovies,AddTopRatedMovies,AddUpComingMovies,AddMutetoTrailer,AddwatchpageTrailer}=movieSlice.actions
+export const {AddnowPlayingMovies,AddVedioTrailer,AddPopularMovies,AddTopRatedMovies,AddUpComingMovies,AddMutetoTrailer,AddwatchpageTrailer,getSearchResult}=movieSlice.actions
 export default movieSlice.reducer

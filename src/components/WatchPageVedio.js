@@ -8,6 +8,7 @@ const WatchPageVedio = ( ) => {
       
         const clip=Filterclips.length ?  Filterclips[0] : watchpagevedios[0];
         const  clipkey=clip.key;
+        if(!clipkey) return null;
   return (
     <div className=''  >
 

@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import appStore from './Utils/appStore';
 import { RouterProvider } from 'react-router-dom';
+import Header from './components/Header';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={appStore}>
-    <RouterProvider router={appRouter}/>
+    <RouterProvider router={appRouter}>
+  
+    </RouterProvider>
     </Provider>
 
   </React.StrictMode>

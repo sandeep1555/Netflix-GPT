@@ -1,16 +1,22 @@
 
+import { Outlet } from "react-router-dom";
 import useNowPlayingMovies from "../Hooks/useNowPlayingmovies";
 import usePopularMovies from "../Hooks/usePopularMovies";
 import useTopRatedMovies from "../Hooks/useTopRatedMovies";
 import useUpComingMovies from "../Hooks/useUpComingMovies";
 import PrimaryContainer from "./PrimaryContainer";
 import SecondaryConatiner from "./SecondaryConatiner";
+import { useDispatch, useSelector } from "react-redux";
+import { changeTopgptSearch } from "../Utils/gptSlice";
 
 
 
 
 const Browse=()=>
 {
+
+  const dispatch=useDispatch();
+  dispatch(changeTopgptSearch(false));
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -18,6 +24,7 @@ const Browse=()=>
     return(
         <div className="flex justify-between overflow-hidden">
             <div>
+        
             <PrimaryContainer/>
             <SecondaryConatiner/>
            </div>
