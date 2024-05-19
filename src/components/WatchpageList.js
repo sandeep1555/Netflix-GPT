@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 const WatchpageList = () => {
     const movies=useSelector(store=>store.movies);
+    const movieResults=useSelector(store=>store.movies.movieList);
   return (
 
 

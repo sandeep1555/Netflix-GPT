@@ -1,80 +1,74 @@
 import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Utils/firebase";
-import {  useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { adduser, removeuser } from "../Utils/userSlice";
 import { LOGO_URL, SUPPORTED_LANG, options } from "../Utils/useConstant";
 import { changeTopgptSearch } from "../Utils/gptSlice";
 import { changelanguage } from "../Utils/configSlice";
-import { getSearchResult } from "../Utils/movieSlice";
+import { getMovieList, getPopularList, getSearchResult } from "../Utils/movieSlice";
 
 
 
-const Header=()=>
-{
-  const dispatch=useDispatch();
-  const user=useSelector(store => store.user);
-  const  changegptPage=useSelector(store=>store.gpt.gptSearch);
-  const [searchButton,setSearchButton]=useState(false);
-  const [searchQuery,setSearchQuery]=useState(null);
-    const navigate=useNavigate();
-    const handleSignout=()=>
-    {
-signOut(auth).then(() => {
-  removeuser(user);
-  navigate("/");
-  window.location.reload();
+const Header = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(store => store.user);
+  const changegptPage = useSelector(store => store.gpt.gptSearch);
+  const [searchButton, setSearchButton] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(null);
+  const [dropDown,setDropDown]=useState(false);
+  const navigate = useNavigate();
+  const handleSignout = () => {
+    signOut(auth).then(() => {
+      removeuser(user);
+      navigate("/");
+      window.location.reload();
 
 
-}).catch((error) => {
-  
-});
-    }
+    }).catch((error) => {
 
-
-    useEffect(()=>
-    {
-
- const unsubsribe=onAuthStateChanged(auth, (user) => {
-  if (user) {
-    
-    const {uid,email,displayName,photoURL}  = user;
-    dispatch(adduser({uid:uid,email: email,displayName:displayName,photoURL: photoURL}));
-    navigate("/browse");
-   
-  } else {
-    dispatch(removeuser());
-    navigate("/");
-    
+    });
   }
-  return ()=> unsubsribe();
-});
-    },[]);
 
-    const handleGptSearch=()=>
-    {
 
-    if( changegptPage)
-    {
+  useEffect(() => {
+
+    const unsubsribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(adduser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
+        navigate("/browse");
+
+      } else {
+        dispatch(removeuser());
+        navigate("/");
+
+      }
+      return () => unsubsribe();
+    });
+  }, []);
+
+  const handleGptSearch = () => {
+
+    if (changegptPage) {
       navigate("/");
       dispatch(changeTopgptSearch(false));
-     
-    }  
-    else
-   { 
-    dispatch(changeTopgptSearch(true));
-  } ;
-
 
     }
+    else {
+      dispatch(changeTopgptSearch(true));
+    };
 
-    const handleLanguageChange=(e)=>
-    {
-         dispatch(changelanguage(e.target.value))
-    }
 
-    const [isScrolled, setIsScrolled] = useState(false);
+  }
+
+  const handleLanguageChange = (e) => {
+    dispatch(changelanguage(e.target.value))
+  }
+
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,56 +87,101 @@ signOut(auth).then(() => {
     };
   }, []);
 
-  const searchClickHandle=()=>
-  {
+  const searchClickHandle = () => {
     setSearchButton(!searchButton);
   }
   console.log(searchQuery);
-const getSearchQuery=async(event)=>
+  const getSearchQuery = async (event) => {
+    console.log(event)
+    if (event.key === 'Enter') {
+      const data = await fetch("https://api.themoviedb.org/3/search/movie?query=" + searchQuery, options);
+      const json = await data.json();
+      dispatch(getSearchResult(json.results));
+
+      navigate("/search?q=" + searchQuery);
+    }
+
+  }
+
+  const HandleMovieClick = async () => {
+    dispatch(changeTopgptSearch(false));
+    const data = await fetch("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc", options);
+    const json = await data.json();
+    dispatch(getMovieList(json.results));
+    navigate("/movie");
+  }
+  const handlePopularClick = async () => {
+    dispatch(changeTopgptSearch(false));
+    navigate("/movie");
+    const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options);
+    const json = await data.json();
+    dispatch(getPopularList(json.results));
+    navigate("/popular");
+  }
+
+const handleProfileMouseEnter=()=>
 {
-  console.log(event)
-  if(event.key==='Enter')
-  {
-  const data=await fetch("https://api.themoviedb.org/3/search/movie?query="+searchQuery,options);
-  const json=await data.json();
-  dispatch(getSearchResult(json.results));
-
-      navigate("/search?q="+searchQuery);
-     }
-
+  setDropDown(true);
+}
+const handleProfileMouseLeave=()=>
+{
+  setDropDown(false);
 }
 
+  return (
 
 
-    return(<div className={` w-screen  px-8 py-2 ${isScrolled ?   'bg-black':'bg-gradient-to-b from-black  to-transparent' }   flex justify-between items-center fixed z-50 h-[100px]`} >
+    <div className={` w-screen  px-4 py-2 ${isScrolled ? 'bg-black' : 'bg-gradient-to-b from-black  to-transparent'}   flex justify-between items-center fixed z-50 h-[100px]`} >
+
         <div>
-<Link to={"/"}><img  className="w-44 cursor-pointer" src={LOGO_URL} alt="logo" onClick={()=> dispatch(changeTopgptSearch(false))}/></Link>
-</div>
-<div className="text-white">
-  <ul className="flex ">
-    <Link to={"/browse"}><li className="mx-2 cursor-pointer" onClick={()=> dispatch(changeTopgptSearch(false))}>Home</li></Link>
-    <Link to={"/browse"} > <li className="mx-2 cursor-pointer" onClick={()=> dispatch(changeTopgptSearch(false))}>Movies</li></Link>
-    <Link to={"/browse"}><li className="mx-2 cursor-pointer" onClick={()=> dispatch(changeTopgptSearch(false))}>New & Popular</li></Link>
-  </ul>
-</div>
+        <Link to={"/"}><img className="w-[200px]  cursor-pointer " src={LOGO_URL} alt="logo" onClick={() => dispatch(changeTopgptSearch(false))} /></Link>
+        </div>
+        {user && <div className="mr-[300px] flex items-center">
+        
+        <div className="text-white ml-[-80px] mr-[50px]">
+        <ul className="flex  ">
+          <Link to={"/browse"}><li className="mx-2 cursor-pointer" onClick={() => dispatch(changeTopgptSearch(false))}>Home</li></Link>
+          <li className="mx-2 cursor-pointer" onClick={HandleMovieClick}>Movies</li>
+          <li className="mx-2 cursor-pointer" onClick={handlePopularClick}>New & Popular</li>
+        </ul>
+      </div>
+      {!changegptPage && <input className="bg-transparent text-white border border-white  p-3 h-[50px]  rounded-lg outline-none placeholder-gray" type="text" placeholder="search for movies....." onChange={(e) => setSearchQuery(e.target.value)} onKeyDown={getSearchQuery} />}
+
+      </div>}
+  
+
+      {user && <div className="flex p-2">
+        {changegptPage && <select className="m-4 my-6 px-2 bg-red rounded-lg" onChange={handleLanguageChange}>
+          {SUPPORTED_LANG.map((lang) => <option key={lang.name} value={lang.identifer}>{lang.name}</option>)}
+        </select>}
+       
+        {/* {searchButton ?  <input type="text" placeholder="search for movies"/>: <button className="px-4 py-2 m-6  bg-red-600 text-white rounded-lg" onClick={searchClickHandle}>Search</button>} */}
+        <button className="px-4 py-3 m-6  bg-red-600 text-white rounded-lg " onClick={handleGptSearch}>{changegptPage ? "Home" : "GPT Search"}</button>
+        <div className="relative"  onMouseEnter={handleProfileMouseEnter} onMouseLeave={handleProfileMouseLeave}>
+          <div className="flex mr-[40px] items-center">
+          <img className="w-12 h-12  mt-6 rounded-lg " src={user.photoURL} />
+          <span className="text-white m-2 text-xl ">{dropDown ?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+</svg>
+:<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+</svg>
+}</span>
+          </div>
+
+         { dropDown &&  (<div className="absolute   px-4  w-[250px] ml-[-180px]  text-center my-[15px] bg-gray-800 rounded-lg ">
+         <Link to={"/comingsoon"}><button  className=" text-white  px-8 py-2 font-normal hover:underline ">Manage Profile</button></Link>
+         <Link to={"/comingsoon"}><button  className=" text-white  px-8 py-2 font-normal hover:underline">Account</button></Link>
+         <Link to={"/comingsoon"}><button  className=" text-white  px-8 py-2 font-normal hover:underline">Help Centre</button></Link><hr></hr>
+            <button onClick={handleSignout} className=" text-white  px-8 py-2 pb-4 font-normal hover:underline ">Sign Out</button>
+            
+
+          </div>)}
+        </div>
 
 
 
-           { user && <div className="flex p-2">
-            { changegptPage && <select className="m-4 my-6 px-2 bg-red rounded-lg" onChange={handleLanguageChange}>
-              {SUPPORTED_LANG.map((lang)=> <option  key={lang.name} value={lang.identifer}>{lang.name}</option>)}
-            </select>}
-            <input className="bg-gray-100 border border-gray-500 p-2 h-[50px] mt-[20px] rounded-lg outline-none " type="text" placeholder="search for movies" onChange={(e)=>setSearchQuery(e.target.value)} onKeyDown={getSearchQuery} />
-            {/* {searchButton ?  <input type="text" placeholder="search for movies"/>: <button className="px-4 py-2 m-6  bg-red-600 text-white rounded-lg" onClick={searchClickHandle}>Search</button>} */}
-           <button className="px-4 py-2 m-6  bg-red-600 text-white rounded-lg " onClick={handleGptSearch}>{changegptPage ? "Home" : "GPT Search"}</button>
-          
-           <p className="text-white mx-4 my-8">Welcome,{user.displayName}</p>
-
-           <img  className="w-14 h-14  my-4 rounded-lg" src={user.photoURL}/>
-
-
-           <button onClick={handleSignout} className="bg-red-600 text-white px-4 py-2 m-6 rounded-lg ">Sign Out</button>
-           </div>}
+      </div>}
 
 
     </div>)

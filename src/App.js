@@ -10,6 +10,10 @@ import Header from './components/Header';
 import GptSearchPage from './components/GptSearchPage';
 import ComingSoon from './components/ComingSoon';
 import SearchPage from './components/SearchPage';
+import MovieListResults from './components/MovieListResults';
+import PopularResults from './components/PopularResults';
+import Footer from './components/Footer';
+import ErrorPage from './components/ErrorPage';
 
 
 function App() {
@@ -17,8 +21,10 @@ function App() {
   const  changegptPage=useSelector(store=>store.gpt.gptSearch);
   return (
     <div className="">
-        <Header/>       
+        <Header/>    
+          
       {changegptPage ? <GptSearchPage/>: <Body/>}
+ 
     </div>
   );
 }
@@ -43,6 +49,22 @@ export const appRouter=createBrowserRouter([
     {
       path:"/search",
       element:<SearchPage/>
+    },
+    {
+      path:"/movie",
+      element:<MovieListResults/>
+    },
+    {
+      path:"/popular",
+      element:<PopularResults/>
+    },
+    {
+      path:"/error",
+      element:<ErrorPage/>
+    },
+    {
+      path:"/comingsoon",
+      element:<ComingSoon/>
     }
       
       ]

@@ -7,15 +7,17 @@ import Header from "./Header"
 import GptSearchPage from "./GptSearchPage"
 import { useSelector } from "react-redux"
 import { useEffect } from "react"
+import Footer from "./Footer"
 
 
 const Body=()=>
 {
-  
+  console.log(process.env.OPENIAI_KEY);
     return(
         <div>
     
       <Outlet/>
+      <Footer/>
 
         </div>
     )

@@ -21,6 +21,7 @@ const Browse=()=>
   usePopularMovies();
   useTopRatedMovies();
   useUpComingMovies();
+  
     return(
         <div className="flex justify-between overflow-hidden">
             <div>

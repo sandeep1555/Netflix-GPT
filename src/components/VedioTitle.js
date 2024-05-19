@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AddMutetoTrailer } from "../Utils/movieSlice";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const VedioTitle=({title,overview,id})=>
 
@@ -18,13 +18,18 @@ const handleplaybutton=()=>
 {
      navigate("/watch?v="+id);
 }
+
+const handleMoreInfo=()=>
+{
+    navigate("/comingsoon")
+}
     return(<div className="pt-[20%] absolute w-screen aspect-video bg-gradient-to-r from-black-300 text-white">
         <h1 className="text-5xl font-bold px-4">{title}</h1>
         <p className="text-lg px-4 w-4/12 py-4">{overview}</p>
         <div className="flex justify-between ">
             <div >
         <button className="px-10 py-3 bg-white text-black mx-6 rounded-lg hover:bg-opacity-80" onClick={handleplaybutton}>▶  Play</button>
-        <button className="px-10 py-3 bg-white text-black mx-3 rounded-lg hover:bg-opacity-80">  More Info</button>   
+       <button className="px-10 py-3 bg-white text-black mx-3 rounded-lg hover:bg-opacity-80" onClick={handleMoreInfo}>  More Info</button>   
     </div>
 
     <div className="flex items-center">

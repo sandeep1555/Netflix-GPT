@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import openai from "../Utils/openai";
 import ComingSoon from "./ComingSoon";
 import { useNavigate } from "react-router-dom";
-import { options } from "../Utils/useConstant";
+import { OPEN_AI_KEY, options } from "../Utils/useConstant";
 import { getMovieInfo } from "../Utils/gptSlice";
 import GptMovieSuggestion from "./GptMovieSuggestion";
 
@@ -21,6 +21,7 @@ const GptSearchBar=()=>
     const json=await data.json();
     return json.results;
   }
+
 
   const handleGptSearch=async()=>
   {

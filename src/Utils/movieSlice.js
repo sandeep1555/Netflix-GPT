@@ -13,6 +13,8 @@ const movieSlice=createSlice({
         muteTotrailer:false,
         watchpageTrailer:null,
         searchResults:null,
+        movieList:null,
+        popularList:null,
     },
     reducers:
     {
@@ -47,8 +49,17 @@ const movieSlice=createSlice({
         getSearchResult:(state,action)=>
         {
             state.searchResults=action.payload;
-        }
+        },
+        getMovieList:(state,action)=>
+            {
+                 state.movieList=action.payload;
+            },
+            getPopularList:(state,action)=>
+            {
+                  state.popularList=action.payload;
+            }
+        
     }
 })
-export const {AddnowPlayingMovies,AddVedioTrailer,AddPopularMovies,AddTopRatedMovies,AddUpComingMovies,AddMutetoTrailer,AddwatchpageTrailer,getSearchResult}=movieSlice.actions
+export const {AddnowPlayingMovies,AddVedioTrailer,AddPopularMovies,AddTopRatedMovies,AddUpComingMovies,AddMutetoTrailer,AddwatchpageTrailer,getSearchResult,getMovieList,getPopularList}=movieSlice.actions
 export default movieSlice.reducer

@@ -98,6 +98,7 @@ else{
     const toggleSignInForm=()=>
     {
          setIsSignInForm(!IsSignInForm);
+         setErrormessage(null);
     }
     return (
         <div className="mb-2">
