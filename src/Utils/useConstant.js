@@ -28,4 +28,7 @@ export const  options = {
 
 
 
-export const OPEN_AI_KEY=process.env.OPENAI_KEY;
+export const OPEN_AI_KEY= process.env.OPENAI_KEY;
+
+
+
