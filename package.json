@@ -1,9 +1,8 @@
 {
-  
+  "homepage":"https://sandeep1555.github.io/Netflix-GPT",
   "name": "netflix-gpt",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://sandeep1555.github.io/Netflix-GPT",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.20.9",
     "@heroicons/react": "^2.1.3",
