@@ -19,6 +19,8 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState(null);
   const [dropDown,setDropDown]=useState(false);
   const navigate = useNavigate();
+  
+
   const handleSignout = () => {
     signOut(auth).then(() => {
       removeuser(user);
@@ -90,9 +92,9 @@ const Header = () => {
   const searchClickHandle = () => {
     setSearchButton(!searchButton);
   }
-  console.log(searchQuery);
+
   const getSearchQuery = async (event) => {
-    console.log(event)
+
     if (event.key === 'Enter') {
       const data = await fetch("https://api.themoviedb.org/3/search/movie?query=" + searchQuery, options);
       const json = await data.json();

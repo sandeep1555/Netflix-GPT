@@ -6,10 +6,10 @@ const WatchPageVedio = ( ) => {
      
     const watchpagevedios=useSelector(store=>store.movies.watchpageTrailer);
     const Filterclips=watchpagevedios.filter(vedio=> vedio.type==="Clip");
-    console.log(Filterclips)
+  
       
         const clip=Filterclips.length ?  Filterclips[0] : watchpagevedios[0];
-        console.log(clip)
+
         const  clipkey=clip?.key;
         if(!clipkey) return <ErrorPage/>;
   return (

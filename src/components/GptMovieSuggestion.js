@@ -10,7 +10,7 @@ const GptMovieSuggestion=()=>
    const movieInfo=useSelector(store=>store.gpt.movieInfo);
 
 
-console.log(movieName)
+
 
 
     return (

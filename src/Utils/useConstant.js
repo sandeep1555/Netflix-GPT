@@ -27,9 +27,8 @@ export const  options = {
 }]
 
 
-export const OPENIAI_KEY_ENV= process.env.OPENAI_KEY;
 
-
+export const OPENAI_API=process.env.REACT_APP_OPENAI_API;
 
 
 

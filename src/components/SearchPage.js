@@ -11,7 +11,7 @@ const SaerchQuery=searchParams.get("q");
 
 const SearchListMovies=useSelector(store=>store.movies.searchResults);
 
-console.log(SearchListMovies)
+
   return (
     <div className='bg-gray-900 pt-[100px] h-screen '>
     <SearchList title={"Result of "+SaerchQuery} movies={SearchListMovies}/>

@@ -6,7 +6,7 @@ const MovieListResults = () => {
 
 
     const movieResults=useSelector(store=>store.movies.movieList);
-    console.log(movieResults)
+
 
   return (
     <div className='bg-gray-900 pt-[100px] '>
