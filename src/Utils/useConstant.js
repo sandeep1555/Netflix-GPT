@@ -28,9 +28,9 @@ export const  options = {
 
 
 
-export const OPEN_AI_KEY="sk-proj-L1jMXVrRLrRnEf4k6qu0T3BlbkFJaijwxYtJnQL8BW3BCP6s";
+export const OPEN_AI_KEY="sk-proj-OYXvEcUB0IiSfYP9crQ7T3BlbkFJbp2idz7hqmBRpUWJomYg";
 
-// process.env.OPENAI_KEY;
+export const OPENIAI_KEY_ENV= process.env.OPENAI_KEY;
 
 
 

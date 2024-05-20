@@ -8,6 +8,7 @@ import PrimaryContainer from "./PrimaryContainer";
 import SecondaryConatiner from "./SecondaryConatiner";
 import { useDispatch, useSelector } from "react-redux";
 import { changeTopgptSearch } from "../Utils/gptSlice";
+import { OPENIAI_KEY_ENV } from "../Utils/useConstant";
 
 
 
@@ -21,7 +22,7 @@ const Browse=()=>
   usePopularMovies();
   useTopRatedMovies();
   useUpComingMovies();
-  
+ 
     return(
         <div className="flex justify-between overflow-hidden">
             <div>
