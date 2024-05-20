@@ -12,7 +12,6 @@ import Footer from "./Footer"
 
 const Body=()=>
 {
-  console.log(process.env.OPENIAI_KEY);
     return(
         <div>
     
