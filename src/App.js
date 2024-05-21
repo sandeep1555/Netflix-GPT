@@ -1,5 +1,5 @@
 
-import { Provider, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './App.css';
 import Body from './components/Body';
 import { createBrowserRouter } from 'react-router-dom';
@@ -12,7 +12,6 @@ import ComingSoon from './components/ComingSoon';
 import SearchPage from './components/SearchPage';
 import MovieListResults from './components/MovieListResults';
 import PopularResults from './components/PopularResults';
-import Footer from './components/Footer';
 import ErrorPage from './components/ErrorPage';
 
 

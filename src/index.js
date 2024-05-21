@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App, { appRouter } from './App';
+import { appRouter } from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import appStore from './Utils/appStore';
 import { RouterProvider } from 'react-router-dom';
-import Header from './components/Header';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
