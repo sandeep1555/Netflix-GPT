@@ -22,9 +22,9 @@ if(changegptPage)
     movies &&
    <div className=" p-4  w-screen">
       <h1 className="text-3xl my-2 text-white font-bold ">{title}</h1>
-     <div className="flex overflow-x-scroll">
+     <div className="flex overflow-x-scroll  hide-scrollbar ">
             
-              <div className="flex overflow-y-hidden " onClick={moviecardClick}>
+              <div className="flex overflow-y-hidden  hide-scrollbar" onClick={moviecardClick}>
                 {movies.map((movie)=>
                 (
                    <Link to={"/watch?v="+movie.id}><MovieCards   key={movie.id}  moviePoster={movie.poster_path}/></Link>

@@ -13,7 +13,7 @@ const SearchListMovies=useSelector(store=>store.movies.searchResults);
 
 
   return (
-    <div className='bg-gray-900 pt-[100px] h-screen '>
+    <div className='bg-gray-900 pt-[100px] h-auto '>
     <SearchList title={"Result of "+SaerchQuery} movies={SearchListMovies}/>
 
     </div>
