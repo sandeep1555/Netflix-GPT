@@ -8,12 +8,14 @@ import { adduser } from "../Utils/userSlice";
 import { useDispatch } from "react-redux";
 import { AVATAR_URL, BG_URL } from "../Utils/useConstant";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import CopyButton from "./CopyButton";
 const Login = () => {
   const dispatch = useDispatch();
   const [IsSignInForm, setIsSignInForm] = useState(true);
   const [SignInButton, setSignInButton] = useState("Sign In");
   const [SignUpButton, setSignUpButton] = useState("Sign Up");
   const [Errormessage, setErrormessage] = useState(null);
+  const [showCredentials,setshowCredentails]=useState(false);
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
@@ -121,6 +123,12 @@ const Login = () => {
     setIsSignInForm(!IsSignInForm);
     setErrormessage(null);
   };
+
+  const handleCredentails=()=>
+  {
+    setshowCredentails(!showCredentials)
+  }
+  
   return (
     <div className="mb-2">
       <div className="absolute ">
@@ -173,7 +181,7 @@ const Login = () => {
           />
         )}
         <button
-          className="bg-red-600 m-2  w-full p-2 my-4  rounded-lg"
+          className="bg-red-600 m-2  w-full p-2 my-4  rounded-lg py-3"
           onClick={clickhandlebutton}
         >
           {IsSignInForm ? SignInButton : SignUpButton}
@@ -190,13 +198,20 @@ const Login = () => {
         </span>
         <span
           onClick={toggleSignInForm}
-          className="hover:underline cursor-pointer text-red-600 "
+          className="hover:underline cursor-pointer text-red-600  "
         >
           {IsSignInForm ? "Sign Up Now" : "Sign In"}
         </span>
+        <div className="my-4">
+        <span >Demo Credentials,<span onClick={handleCredentails} className="hover:underline cursor-pointer text-red-600 ">{showCredentials ?"hide":"show"}</span></span>
+        {showCredentials && 
+        <div className="my-2">
+          <p>Email:demo123@gmail.com<CopyButton text={"demo123@gmail.com"}/></p>
+          <p>Password:Demo@123<CopyButton text={"Demo@123"}/></p>
+          </div>}
+      </div>
       </form>
-
-      <Header />
+      
     </div>
   );
 };
