@@ -126,19 +126,32 @@ const Header = () => {
   const handleProfileMouseLeave = () => {
     setDropDown(false);
   };
+  const handlelogoClick=()=>
+  {
+    dispatch(changeTopgptSearch(false))
+    if(user)
+    {
+      navigate("/browse")
+      window.location.reload();
+    }
+    else{
+      navigate("/");
+      window.location.reload();
+    }
+  }
 
   return (
     <div
       className={` w-screen  px-4 md:py-2 ${isScrolled ? "bg-black" : "bg-gradient-to-b from-black  to-transparent"} mx-auto   flex flex-col  md:flex-row md:justify-between items-center fixed z-50 h-[100px] md:mt-[-7px]`}>
       <div className="">
-        <Link to={"/"}>
+        
           <img
             className="w-[200px]  cursor-pointer "
             src={LOGO_URL}
             alt="logo"
-            onClick={() => dispatch(changeTopgptSearch(false))}
+            onClick={handlelogoClick}
           />
-        </Link>
+    
       </div>
       {user && (
         <div className="md:ml-[-150px] flex items-center ">
