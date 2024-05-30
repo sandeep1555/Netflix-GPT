@@ -130,20 +130,20 @@ const Login = () => {
   }
   
   return (
-    <div className="mb-2">
+    <div className="bg-gray-900">
       <div className="absolute ">
         <img
-          className="bg-opacity-25 bg-black  w-screen h-full "
+          className="bg-opacity-25 bg-black  w-screen h-screen "
           src={BG_URL}
           alt="netflix-bg"
         />
       </div>
-
+     <div className="flex items-center justify-center">
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="absolute bg-black px-10 py-10 w-4/12 text-white my-32 mx-auto left-0 right-0 opacity-90  rounded-lg"
+        className=" bg-black px-10 py-10 w-4/12 text-white my-44 mx-auto left-0 right-0 opacity-90  rounded-lg"
       >
         <h1 className="text-2xl my-4 mx-2 py-2 ">
           {IsSignInForm ? "Sign In" : "Sign Up"}
@@ -211,6 +211,7 @@ const Login = () => {
           </div>}
       </div>
       </form>
+      </div>
       
     </div>
   );

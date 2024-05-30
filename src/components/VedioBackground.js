@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import useMovietrailer from "../Hooks/useMovieTrailer";
 
 const VedioBackground = ({ id }) => {
-
   const mute = useSelector((store) => store.movies.muteTotrailer);
   const muteval = mute ? "" : "mute=1";
   const TrailerKey = useSelector((store) => store.movies?.VedioTrailer?.key);
@@ -23,3 +22,5 @@ const VedioBackground = ({ id }) => {
 };
 
 export default VedioBackground;
+
+
