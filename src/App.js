@@ -13,6 +13,8 @@ import SearchPage from './components/SearchPage';
 import MovieListResults from './components/MovieListResults';
 import PopularResults from './components/PopularResults';
 import ErrorPage from './components/ErrorPage';
+import MainpageShimmer from './Shimmer/MainpageShimmer';
+import HeaderShimmer from './Shimmer/HeaderShimmer';
 
 
 function App() {
@@ -64,9 +66,13 @@ export const appRouter=createBrowserRouter([
     {
       path:"/comingsoon",
       element:<ComingSoon/>
-    }
+    },
       
       ]
+    },
+    {
+      path:"/shimmer",
+      element:<MainpageShimmer/>
     },
     
       

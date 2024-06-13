@@ -1,6 +1,7 @@
 import { Outlet} from "react-router-dom"
 
 import React, { Suspense, lazy } from "react"
+import MainpageShimmer from "../Shimmer/MainpageShimmer";
 
 
 const Body=()=>
@@ -13,6 +14,7 @@ const Body=()=>
       <Suspense>
       <Footer/>
       </Suspense>
+     
 
         </div>
     )

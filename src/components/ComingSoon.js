@@ -1,4 +1,5 @@
 import React from 'react'
+import MainpageShimmer from '../Shimmer/MainpageShimmer'
 
 const ComingSoon = () => {
 
@@ -12,8 +13,10 @@ const ComingSoon = () => {
     <div className="search relative">
       <div className="mt-3 px-4 md:px-12 py-3 min-h-[400px] flex justify-center items-center">
         <h1 className='text-5xl text-white font-bold'>This Feature will Come Soon...</h1>
+        <MainpageShimmer/>
       </div>
     </div>
+   
     </div>
   )
 }
