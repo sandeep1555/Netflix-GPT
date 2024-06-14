@@ -18,7 +18,7 @@ const SearchList = ({ title, movies }) => {
             ))}
           </div>
         </div>
-      </div>
+      </div> 
     )
   );
 };
