@@ -9,7 +9,7 @@ const GptSearchPage = () => {
     <div>
       <div className="absolute  -z-20">
         <img
-          className="bg-opacity-25 bg-black  w-screen h-full  "
+          className="bg-opacity-25 bg-black  w-screen h-screen  "
           src={BG_URL}
           alt="netflix-bg"
         />

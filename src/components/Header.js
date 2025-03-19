@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { adduser, removeuser } from "../Utils/userSlice";
 import { LOGO_URL, SUPPORTED_LANG, options } from "../Utils/useConstant";
-import { changeTopgptSearch } from "../Utils/gptSlice";
+import { changeTopgptSearch, removeMovieInfo } from "../Utils/gptSlice";
 import { changelanguage } from "../Utils/configSlice";
 import {getMovieList,getPopularList,getSearchResult} from "../Utils/movieSlice";
 
@@ -51,8 +51,10 @@ const Header = () => {
 
   const handleGptSearch = () => {
     if (changegptPage) {
-      navigate("/");
+      navigate("/browse");
       dispatch(changeTopgptSearch(false));
+      dispatch(removeMovieInfo())
+
     } else {
       dispatch(changeTopgptSearch(true));
     }
@@ -178,9 +180,9 @@ const Header = () => {
        {user && <div>
         {!changegptPage && (
             <input
-              className="bg-transparent text-white border border-white  p-3 h-[50px]  rounded-lg outline-none placeholder-gray md:mr-[100px]"
+              className="bg-transparent text-white border border-white  p-3 h-[50px]  rounded-lg outline-none placeholder-gray md:mr-[100px] w-[300px]"
               type="text"
-              placeholder="search for movies....."
+              placeholder="Search for Movies....."
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={getSearchQuery}
             />

@@ -6,7 +6,7 @@ const SecondaryConatiner = () => {
 
   return (
     movies && (
-      <div className="bg-gray-900">
+      <div style={{backgroundColor:"#141413"}} >
         <div className="-mt-52 z-20 relative">
           <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies} />
           <MovieList title={"Top Rated Movies"} movies={movies.topRatedMovies}/>

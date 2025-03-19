@@ -38,7 +38,8 @@ const GptSearchBar = () => {
 
     const chatCompletion = await openai.chat.completions.create({
       messages: [{ role: "user", content: query }],
-      model: "gpt-3.5-turbo",
+      store: true,
+      model: "gpt-4o-mini",
     });
 
     const movieList = chatCompletion?.choices?.[0]?.message?.content.split(",");

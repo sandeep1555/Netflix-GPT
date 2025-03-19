@@ -18,9 +18,14 @@ const gptSearch=createSlice({
             const {movieInfo,movieName}=action.payload;
             state.movieName=movieName;
             state.movieInfo=movieInfo;
+        },
+        removeMovieInfo:(state)=>
+        {
+            state.movieInfo=null;
+            state.movieName=null;
         }
     }
 })
 
-export const {changeTopgptSearch,getMovieInfo}=gptSearch.actions
+export const {changeTopgptSearch,getMovieInfo,removeMovieInfo}=gptSearch.actions
 export default gptSearch.reducer
